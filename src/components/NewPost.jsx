@@ -12,7 +12,12 @@ function NewPost(props) {
         <label htmlFor="body">Text</label>
         <textarea id="body" required rows={5} onChange={props.onBodyChange} />
       </p>
-      <GlassButton>Submit</GlassButton>
+      <p className={classes.actions}>
+        <GlassButton>Submit</GlassButton>
+        <button type="button" onClick={props.onCancel}>
+          Cancel
+        </button>
+      </p>
     </form>
   );
 }
