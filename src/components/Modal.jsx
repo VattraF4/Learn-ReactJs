@@ -3,7 +3,13 @@ function Modal(props) {
   return (
     <>
       <div className={classes.backdrop} onClick={props.onClose}>
-        <dialog open className={classes.modal}>{props.children}</dialog>
+        <dialog
+          open
+          className={classes.modal}
+          onClick={(event) => event.stopPropagation()}
+        >
+          {props.children}
+        </dialog>
       </div>
     </>
   );

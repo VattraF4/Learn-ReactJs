@@ -3,32 +3,16 @@ import { useState } from "react";
 import Post from "./Post";
 import NewPost from "./NewPost";
 import Modal from "./Modal";
-function PostList({ isPosting, onStopPosting }) {
-
-  const [enteredBody, setEnteredBody] = useState("");
-  const [enteredAuthor, setEnteredAuthor] = useState("");
-
-  function bodyChangeHandler(event) {
-    setEnteredBody(event.target.value);
-  }
-
-  function authorChangeHandler(event) {
-    setEnteredAuthor(event.target.value);
-  }
-
+function PostList({ isPosting, onStopPosting}) {
   return (
     <>
       {isPosting && (
         <Modal onClose={onStopPosting}>
-          <NewPost
-            onBodyChange={bodyChangeHandler}
-            onAuthorChange={authorChangeHandler}
-            onCancel={onStopPosting}
-          />
+          <NewPost onCancel={onStopPosting} />
         </Modal>
       )}
       <ul className={classes.posts}>
-        <Post author={enteredAuthor} content={enteredBody} />
+      
         <Post author="Ra Vattra" content="Hello World!" />
       </ul>
     </>

@@ -1,20 +1,42 @@
-import GlassButton from "./GlassButton";
+import { useState } from "react";
 import classes from "./NewPost.module.css";
 
-function NewPost(props) {
+function NewPost({ onCancel }) {
+  const [enteredBody, setEnteredBody] = useState("");
+  const [enteredAuthor, setEnteredAuthor] = useState("");
+  function bodyChangeHandler(event) {
+    setEnteredBody(event.target.value);
+  }
+
+  function authorChangeHandler(event) {
+    setEnteredAuthor(event.target.value);
+  }
+  function submitHandler(event) {
+    event.preventDefault();
+    const postData = {
+      body: enteredBody,
+      author: enteredAuthor,
+    };
+    // props.onBodyChange(postData.body);
+    // props.onAuthorChange(postData.author);
+    console.log(postData);
+    onCancel();
+  }
   return (
-    <form className={classes.form}>
+    <form className={classes.form} onSubmit={submitHandler}>
       <p>
         <label htmlFor="name">Your name</label>
-        <input type="text" id="name" required onChange={props.onAuthorChange} />
+        <input type="text" id="name" required onChange={authorChangeHandler} />
       </p>
       <p>
         <label htmlFor="body">Text</label>
-        <textarea id="body" required rows={5} onChange={props.onBodyChange} />
+        <textarea id="body" required rows={5} onChange={bodyChangeHandler} />
       </p>
       <p className={classes.actions}>
-        <GlassButton>Submit</GlassButton>
-        <button type="button" onClick={props.onCancel}>
+        <button type="submit" className={classes.button}>
+          Submit
+        </button>
+        <button type="button" onClick={onCancel}>
           Cancel
         </button>
       </p>
