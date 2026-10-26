@@ -7,7 +7,7 @@ function App() {
   return (
     <main>
       <PostList />
-      <GlassButton>Click Here</GlassButton>
+      {/* <GlassButton>Click Here</GlassButton> */}
     </main>
   );
 }
