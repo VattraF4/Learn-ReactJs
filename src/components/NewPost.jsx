@@ -1,5 +1,6 @@
 import GlassButton from "./GlassButton";
 import classes from "./NewPost.module.css";
+import Modal from "./Modal";
 
 function NewPost(props) {
   return (
