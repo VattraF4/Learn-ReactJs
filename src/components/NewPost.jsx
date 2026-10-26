@@ -14,6 +14,7 @@ function NewPost({ onCancel, onAddPost }) {
   function submitHandler(event) {
     event.preventDefault();
     const postData = {
+      id: crypto.randomUUID(),
       body: enteredBody,
       author: enteredAuthor,
     };

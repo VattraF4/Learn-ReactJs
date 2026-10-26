@@ -16,9 +16,18 @@ function PostList({ isPosting, onStopPosting }) {
           <NewPost onCancel={onStopPosting} onAddPost={addPostHandler} />
         </Modal>
       )}
-      <ul className={classes.posts}>
-        <Post author="Vattra" content="Hello World!" />
-      </ul>
+      {posts.length > 0 && (
+        <ul className={classes.posts}>
+          {posts.map((post) => (
+            <Post key={post.id} content={post.body} author={post.author} />
+          ))}
+        </ul>
+      )}
+      {posts.length === 0 && (
+        <div style={{ textAlign: "center", color: "red" }}>
+          <h2>No posts found. Maybe add one?</h2>
+        </div>
+      )}
     </>
   );
 }
