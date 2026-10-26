@@ -1,14 +1,23 @@
 import "./App.css";
-import GlassButton from "./components/GlassButton";
-import PostList from "./components/PostLists"
-import Post from "./components/Post";
+import { useState } from "react";
+import MainHeader from "./components/MainHeader";
+import PostList from "./components/PostLists";
 
 function App() {
+  const [modalIsVisible, setModalIsVisible] = useState(true);
+  function showModalHandler() {
+    setModalIsVisible(true);
+  }
+  function hideModalHandler() {
+    setModalIsVisible(false);
+  }
   return (
-    <main>
-      <PostList />
-      {/* <GlassButton>Click Here</GlassButton> */}
-    </main>
+    <>
+      <MainHeader onCreatePost={showModalHandler} />
+      <main>
+        <PostList isPosting={modalIsVisible} onStopPosting = {hideModalHandler} />
+      </main>
+    </>
   );
 }
 
